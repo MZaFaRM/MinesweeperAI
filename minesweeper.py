@@ -1,4 +1,3 @@
-from django.shortcuts import render
 import itertools
 import random
 import re
@@ -17,8 +16,10 @@ class Minesweeper:
 
         # Initialize an empty field with no mines
         self.board = []
-        for _ in range(self.height):
-            row = [False for _ in range(self.width)]
+        for i in range(self.height):
+            row = []
+            for j in range(self.width):
+                row.append(False)
             self.board.append(row)
 
         # Add mines randomly
@@ -62,14 +63,16 @@ class Minesweeper:
         count = 0
 
         # Loop over all cells within one row and column
-        for i, j in itertools.product(range(cell[0] - 1, cell[0] + 2), range(cell[1] - 1, cell[1] + 2)):
-            # Ignore the cell itself
-            if (i, j) == cell:
-                continue
+        for i in range(cell[0] - 1, cell[0] + 2):
+            for j in range(cell[1] - 1, cell[1] + 2):
+                # Ignore the cell itself
+                if (i, j) == cell:
+                    continue
 
-            # Update count if cell in bounds and is mine
-            if 0 <= i < self.height and 0 <= j < self.width and self.board[i][j]:
-                count += 1
+                # Update count if cell in bounds and is mine
+                if 0 <= i < self.height and 0 <= j < self.width:
+                    if self.board[i][j]:
+                        count += 1
 
         return count
 

@@ -17,7 +17,7 @@ WHITE = (255, 255, 255)
 pygame.init()
 size = width, height = 600, 400
 screen = pygame.display.set_mode(size)
-image = pygame.image.load('background.jpg').convert()
+image = pygame.image.load('assets/images/background.jpg').convert()
 
 # Fonts
 OPEN_SANS = "assets/fonts/OpenSans-Regular.ttf"

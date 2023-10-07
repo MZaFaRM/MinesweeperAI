@@ -90,7 +90,7 @@ class Sentence:
     and a count of the number of those cells which are mines.
     """
 
-    def __init__(self, cells, count, source):
+    def __init__(self, cells, count):
         self.cells = set(cells)
         self.count = count
 
